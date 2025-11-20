@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block  contents%}
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Andi Gunshop - Product Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-4">
+        <div class="flex flex-col md:flex-row">
+            <!-- Main Content -->
+            <div class="w-full md:w-3/4 p-4">
+                <div class="bg-white p-4 rounded-lg shadow-md">
+                    <div class="flex flex-col md:flex-row">
+                        <!-- Product Image -->
+                        <div class="w-full md:w-1/2 p-4">
+                            <img class="w-full h-64 object-contain mb-4" src="{{p.image_url.url}}"/>
+                        </div>
+                        <!-- Product Details -->
+                        
+                        <form method="POST" action="{% url 'add_to_cart' product_id=p.id%}" class="w-full md:w-1/2 p-4">
+                            {% csrf_token %}
+                            <h1 class="text-2xl font-semibold mb-4">{{p.name}}</h1>
+                            <p class="text-gray-700 mb-4">
+                                {{p.category}}
+                            </p>
+                            <ul class="list-disc list-inside mb-4">
+                                {{p.slug}}
+                            </ul>
+                            <p class="text-gray-600 mb-4">Rp.{{p.price}}</p>
+                            <button class="bg-blue-500 text-white px-4 py-2 rounded">Add to Cart</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+    {% csrf_token %}
+</form>
+
+{% endblock  %}

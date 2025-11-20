@@ -1,0 +1,29 @@
+{% load static %}
+<header class="bg-white shadow">
+    <div class="container mx-auto flex justify-between items-center py-4 px-6">
+        <div class="flex items-center">
+            <img alt="Company logo" class="h-10" height="50" src="https://storage.googleapis.com/a1aa/image/OnzGDE2K9a4oVs_aaQU2Ll6jTn_ugd7VfCalMnpuCEs.jpg" width="50"/>
+            <span class="ml-2 text-yellow-500 text-2xl font-bold">Andi Gunshop</span>
+        </div>
+        <div class="block lg:hidden">
+            <button id="menu-toggle" class="text-gray-600 hover:text-gray-800 focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+            <a href="{% url 'cart_detail'%}" class="relative">
+        </div>
+        <nav id="menu" class="hidden lg:flex space-x-4">
+            <a class="text-gray-600 hover:text-gray-800" href="#">HOME</a>
+            <a class="text-gray-600 hover:text-gray-800" href="{% url 'index'%}">PRODUK</a>
+            <a class="text-gray-600 hover:text-gray-800" href="{% url 'cart_detail'%}">KERANJANG</a>
+            <a class="text-gray-600 hover:text-gray-800" href="{% url 'history'%}">HISTORY</a>
+        </nav>
+    </div>
+    <div id="mobile-menu" class="lg:hidden hidden">
+        <nav class="flex flex-col space-y-2 p-4">
+            <a class="text-gray-600 hover:text-gray-800" href="#">HOME</a>
+            <a class="text-gray-600 hover:text-gray-800" href="{% url 'index'%}">PRODUK</a>
+            <a class="text-gray-600 hover:text-gray-800" href="{% url 'cart_detail'%}">KERANJANG</a>
+            <a class="text-gray-600 hover:text-gray-800" href="{% url 'history'%}">HISTORY</a>
+        </nav>
+    </div>
+</header>
