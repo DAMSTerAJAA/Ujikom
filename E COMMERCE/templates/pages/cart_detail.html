@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block  contents%}
+
+<h1 class="text-3xl font-bold mb-4">Your Cart</h1>
+
+    {% if cart %}
+    <table class="mt-4 w-full border-collapse bg-white shadow rounded-lg">
+        <thead>
+            <tr class="bg-gray-200">
+                <th class="p-2">Product</th>
+                <th class="p-2">Price</th>
+                <th class="p-2">Quantity</th>
+                <th class="p-2">Total</th>
+                <th class="p-2">Actions</th>
+                <th class="p-2">checkout</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart %}
+            <tr>
+                <td class="p-2">{{ item.product.name }}</td>
+                <td class="p-2">Rp.{{ item.price }}</td>
+                <td class="p-2">{{ item.quantity }}</td>
+                <td class="p-2">Rp.{{ item.total_price }}</td>
+                <td class="p-2">
+                    <a href="{% url 'remove_from_cart' item.product.id %}" class="text-red-500">Remove</a>
+                </td>
+                <td class="p-2">
+                    <a href="{% url 'checkout' item=item.product.id %}" class="mt-2 inline-block bg-blue-500 text-white px-4 py-2 rounded">Checkout</a>
+            </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p class="mt-4 text-xl font-bold">Total: Rp.{{ cart.total_price }}</p>
+    <a href="{% url 'clear_cart' %}" class="mt-2 inline-block bg-red-500 text-white px-4 py-2 rounded">Clear Cart</a>
+    {% else %}
+    <p class="text-gray-600 mt-4">Your cart is empty.</p>
+    {% endif %}
+
+{% endblock  %}
